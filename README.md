@@ -1,3 +1,5 @@
+### Автор:Анисимова Анастасия
+```
 org 0x7C00
 jmp start
 ;Настройка сегмента стека
@@ -16,11 +18,10 @@ start:
     mov dx, 10
     mov bx, 95
     call draw_triangle
-    ;Установка цвета фона
     mov ah, 0x0B
     mov bl, 0x05
     int 0x10
-    ;Вывод тектса
+    ;Установка цвета фона
     mov ah, 0x13
     mov al, 0
     mov bh, 0
@@ -92,14 +93,12 @@ draw_line:
     pop ax
     inc cx
     jmp draw_line
-
 line_done:
     pop cx
     add dx, 1            
     add cx, 2
     dec bx                
-    jnz triangle_loop   
-
+    jnz triangle_loop
     popa                   
     ret
 ;Заполнение текста
@@ -110,3 +109,4 @@ msg3 db "NMT-313901", 0
 ;Заполнение оставшейся части
 times 510-($-$$) db 0
 dw 0xAA55
+```
